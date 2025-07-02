@@ -42,11 +42,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: yum install and update
-        run: |
-          yum update -y
-          yum install -y findutils unzip bash tcsh nc curl make git gcc postgresql-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite-devel openssl-devel xz xz-devel libffi-devel
-
+      
       - name: test psql connection  
         run: |
           PGPASSWORD=testpassword psql -h localhost -U testuser -d testdb -c "SELECT 1;" && break

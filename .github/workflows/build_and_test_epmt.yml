@@ -43,6 +43,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Install PostgreSQL Client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
       - name: test psql connection  
         run: |
           docker run --rm --network host -e PGPASSWORD=testpassword postgres:15 psql -h localhost -U testuser -d testdb -c "SELECT 1;" && break

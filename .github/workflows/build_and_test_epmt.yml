@@ -70,7 +70,7 @@ jobs:
 
       - name: configure python3 and upgrade pip and grab gcc-c++
         run: |
-          ldconfiglocalhost
+          ldconfig
           python3 -V
           pip3 install --upgrade pip
           yum install -y gcc-c++

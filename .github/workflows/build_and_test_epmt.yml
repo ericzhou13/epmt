@@ -48,7 +48,7 @@ jobs:
 
       - name: test psql connection  
         run: |
-          docker run --rm --network host -e PGPASSWORD=testpassword postgres:15 psql -h localhost -U testuser -d testdb -c "SELECT 1;" && break
+          PGPASSWORD=testpassword psql -h localhost -U testuser -d testdb -c "SELECT 1;" && break
           echo "Waiting for PostgreSQL to be ready..."
           sleep 3
           done

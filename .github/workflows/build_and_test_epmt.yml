@@ -14,7 +14,7 @@ concurrency:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:  
         db: ["postgresql", "sqlite"]
@@ -73,6 +73,12 @@ jobs:
         if: matrix.db == 'postgresql'
         run: |
           echo "db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}" >> src/epmt/epmt_default_settings.py
+          cat src/epmt/epmt_default_settings.py
+
+      - name: inject sqlite connection string
+        if: matrix.db == 'sqlite'
+        run: |
+          echo "db_params = { 'url': 'sqlite:///:memory:', 'echo': False }" >> src/epmt/epmt_default_settings.py
           cat src/epmt/epmt_default_settings.py
 
       - name: install python3

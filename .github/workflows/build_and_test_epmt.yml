@@ -14,9 +14,9 @@ concurrency:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
-    test_matrix:
-    strategy: 
-      matrix: 
+    
+    strategy:
+      matrix:  
         db: ["postgresql", "sqlite"]
 
     services:

@@ -64,6 +64,11 @@ jobs:
           cd sqlite-amalgamation-3490100
           gcc -shared -fPIC -O2  -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_LOAD_EXTENSION -DSQLITE_MAX_VARIABLE_NUMBER=9999 sqlite3.c -o /usr/lib64/libsqlite3.so
 
+      - name: inject sql connection string
+        run: |
+          echo "db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}" >> src/epmt/epmt_default_settings.py
+          cat src/epmt/epmt_default_settings.py
+
       - name: install python3
         run: |
           cd /usr/src
@@ -111,10 +116,6 @@ jobs:
           export PATH='/usr/bin:${PATH}:/usr/local/libexec:/usr/local/bin'
           /usr/lib/python3.9/site-packages/epmt/test/integration/libs/bats/install.sh /usr/local
 
-      - name: inject sql connection string
-        run: |
-          echo "db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}" >> src/epmt/epmt_default_settings.py
-          cat src/epmt/epmt_default_settings.py
       - name: epmt version call 
         run: |
           epmt -v -V

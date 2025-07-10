@@ -15,10 +15,10 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     test_matrix:
-    stragey: 
+    strategy: 
       matrix: 
         db: ["postgresql", "sqlite"]
-        
+
     services:
       postgres:
         image: postgres:15

@@ -12,13 +12,13 @@ concurrency:
 
 
 jobs:
-  test_matrix:
+  build-linux:
+    runs-on: ubuntu-latest
+    test_matrix:
     stragey: 
       matrix: 
         db: ["postgresql", "sqlite"]
-  build-linux:
-    runs-on: ubuntu-latest
-    
+        
     services:
       postgres:
         image: postgres:15

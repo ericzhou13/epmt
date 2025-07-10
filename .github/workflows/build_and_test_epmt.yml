@@ -114,7 +114,7 @@ jobs:
       - name: inject sql connection string
         run: |
           echo "db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}" >> src/epmt/epmt_default_settings.py
-
+          cat src/epmt/epmt_default_settings.py
       - name: epmt version call 
         run: |
           epmt -v -V

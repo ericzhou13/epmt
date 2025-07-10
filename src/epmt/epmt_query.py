@@ -1702,6 +1702,7 @@ op_duration_method: string, optional
     -------
     A collection of operation metrics in the selected format
     """
+    from sqlalchemy import func
     if op_duration_method not in ("sum", "sum-minus-overlap", "finish-minus-start"):
         raise ValueError('op_duration_method must be one of ("sum", "sum-minus-overlap", "finish-minus-start")')
     _empty_collection_check(jobs)

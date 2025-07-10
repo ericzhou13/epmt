@@ -22,6 +22,7 @@ jobs:
           POSTGRES_USER: testuser
           POSTGRES_PASSWORD: testpassword
           POSTGRES_DB: testdb
+
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -109,6 +110,10 @@ jobs:
           ln -s  /usr/lib/python3.9/site-packages/epmt/bin /usr/lib/python3.9/site-packages/papiex-epmt-install/
           export PATH='/usr/bin:${PATH}:/usr/local/libexec:/usr/local/bin'
           /usr/lib/python3.9/site-packages/epmt/test/integration/libs/bats/install.sh /usr/local
+          
+      - name: inject sql connection string
+        run: |
+          echo "db_params = '{'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}'" > src/epmt/epmt_default_settings.py
 
       - name: epmt version call 
         run: |

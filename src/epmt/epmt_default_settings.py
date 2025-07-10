@@ -77,8 +77,7 @@ retire_jobs_per_delete_max = 20 # specify the chunk-size to delete jobs in
 orm = 'sqlalchemy'
 #db_params = { 'url': 'sqlite:///:memory:', 'echo': False }
 #db_params = {'url': 'postgresql://epmt:Goal2020@workflow1:5432/epmt', 'echo': False}
-
-db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}
+#db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}
 
 bulk_insert = True
 

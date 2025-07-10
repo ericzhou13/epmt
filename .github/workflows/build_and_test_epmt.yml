@@ -12,6 +12,10 @@ concurrency:
 
 
 jobs:
+  test_matrix:
+    stragey: 
+      matrix: 
+        db: ["postgresql", "sqlite"]
   build-linux:
     runs-on: ubuntu-latest
     
@@ -55,6 +59,7 @@ jobs:
           yum install -y postgresql
           
       - name: install and configure sqlite3
+        if: matrix.db == 'sqlite'
         run: |
           cd /usr/src
           echo 'downloading sqlite3'
@@ -65,6 +70,7 @@ jobs:
           gcc -shared -fPIC -O2  -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_LOAD_EXTENSION -DSQLITE_MAX_VARIABLE_NUMBER=9999 sqlite3.c -o /usr/lib64/libsqlite3.so
 
       - name: inject sql connection string
+        if: matrix.db == 'postgresql'
         run: |
           echo "db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}" >> src/epmt/epmt_default_settings.py
           cat src/epmt/epmt_default_settings.py

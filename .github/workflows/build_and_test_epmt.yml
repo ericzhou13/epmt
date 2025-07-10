@@ -151,6 +151,7 @@ jobs:
 
       - name: test_db_migration call 
         run: |
+          cat src/epmt/alembic.ini
           python3 -m unittest -v epmt.test.test_db_migration
 
       - name: test_db_schema call 

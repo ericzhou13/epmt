@@ -50,7 +50,7 @@ env_blacklist = ["LS_COLORS"]
 
 #
 job_tags_env = 'EPMT_JOB_TAGS'
-per_process_fields = [ "tags","hostname","exename","path","args","exitcode","pid","generation","ppid","pgid","sid",
+per_process_fields = [ "tags","hostname","exename","path","args","exitcode","pid","generation","ppid","pgid","sid", 
                        "numtids", "mpinumranks", "mpirank", "exitsignal" ]
 skip_for_thread_sums = [ "tid", "start", "end", "num_threads", "starttime" ]
 
@@ -77,7 +77,7 @@ retire_jobs_per_delete_max = 20 # specify the chunk-size to delete jobs in
 orm = 'sqlalchemy'
 #db_params = { 'url': 'sqlite:///:memory:', 'echo': False }
 #db_params = {'url': 'postgresql://epmt:Goal2020@workflow1:5432/epmt', 'echo': False}
-#db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}
+db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}
 
 bulk_insert = True
 

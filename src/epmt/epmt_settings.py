@@ -23,4 +23,3 @@ except Exception as e:
 
 #epmt_settings_kind=''
 #db_params = {'url': 'sqlite:///:memory:', 'echo': False}
-

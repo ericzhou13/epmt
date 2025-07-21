@@ -23,3 +23,4 @@ except Exception as e:
 
 #epmt_settings_kind=''
 #db_params = {'url': 'sqlite:///:memory:', 'echo': False}
+db_params = {'url': 'postgresql://testuser:testpassword@postgres:5432/testdb', 'echo': False}

@@ -688,7 +688,7 @@ def chdir_for_alembic_and_restore_cwd(function):
 def check_and_apply_migrations():
     from alembic import config, script
     database_schema_version = get_db_schema_version()
-    alembic_cfg = config.Config('/home/Eric.Zhou/epmt_git_hates_me/src/epmt/alembic.ini')
+    alembic_cfg = config.Config('../../alembic.ini')
     script_ = script.ScriptDirectory.from_config(alembic_cfg)
     epmt_schema_head = script_.get_current_head()
 

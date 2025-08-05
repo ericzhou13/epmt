@@ -135,11 +135,15 @@ jobs:
       - name: Test connection to PostGres
         run: |
           PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -d $POSTGRES_DB -c '\l'
-      - name: Debug workspace
+
+      - name: Debug path
         run: |
           pwd
           ls -R
-          find . -name "alembic.ini"
+
+      - name: Find alembic.ini
+        run: find . -name alembic.ini
+      
       - name: epmt check call 
         run: |
           echo 2 > /proc/sys/kernel/perf_event_paranoid

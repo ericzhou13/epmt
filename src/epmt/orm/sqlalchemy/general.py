@@ -691,7 +691,7 @@ def check_and_apply_migrations():
     database_schema_version = get_db_schema_version()
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    alembic_ini_path = os.path.join(BASE_DIR, 'alembic.ini')
+    alembic_ini_path = os.path.join(BASE_DIR, '../../alembic.ini')
     alembic_cfg = config.Config(alembic_ini_path)
 
     script_ = script.ScriptDirectory.from_config(alembic_cfg)

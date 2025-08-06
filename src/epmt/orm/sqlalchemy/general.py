@@ -689,6 +689,10 @@ def check_and_apply_migrations():
     from alembic import config, script
     database_schema_version = get_db_schema_version()
     alembic_cfg = config.Config('../../alembic.ini')
+    print('test')
+    import os
+    print(os.getcwd())
+
     script_ = script.ScriptDirectory.from_config(alembic_cfg)
     epmt_schema_head = script_.get_current_head()
 

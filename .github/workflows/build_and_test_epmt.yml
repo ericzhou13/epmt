@@ -139,7 +139,7 @@ jobs:
       - name: Debug working directory and files
         run: |
           pwd
-          which epmt
+          command -v epmt
           python -c "import epmt; print(epmt.__file__)"
           find /usr/lib/python3.9/site-packages/epmt -maxdepth 2 -type f
       

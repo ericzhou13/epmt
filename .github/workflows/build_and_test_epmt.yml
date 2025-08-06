@@ -140,8 +140,14 @@ jobs:
         run: |
           pwd
           command -v epmt
-          python -c "import epmt; print(epmt.__file__)"
+          python3 -c "import epmt; print(epmt.__file__)"
           find /usr/lib/python3.9/site-packages/epmt -maxdepth 2 -type f
+
+      - name: Check Alembic files
+        run: |
+          pwd
+          find . -name alembic.ini || echo "alembic.ini not found!"
+          find . -name epmt_migrations || echo "epmt_migrations folder not found!"
       
       - name: epmt check call 
         run: |

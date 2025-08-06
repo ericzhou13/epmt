@@ -19,9 +19,17 @@ class EPMTDBMigration(unittest.TestCase):
     @unittest.skipUnless((settings.orm == 'sqlalchemy') and not(orm_in_memory()), 'requires sqlalchemy with persistent backend')
     def test_create_and_apply_migration(self):
         import alembic.config
+        from alembic import config as alembic_config
+        import os
         from os import path, remove
         rev_id = 'deadbeef'
         migration_file = 'migrations/versions/{}_add_active_column_to_users_table.py'.format(rev_id)
+
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        alembic_ini_path = os.path.join(BASE_DIR, '../../alembic.ini')
+        cfg = alembic_config.Config("alembic_ini_path")
+        cfg.set_main_option("script_location", "epmt_migrations")
+
         with capture() as (out,err):
             alembic.config.main(argv=["revision", "--rev-id", rev_id, "-m", "add active column to users table"])
         s = out.getvalue()

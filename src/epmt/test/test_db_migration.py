@@ -27,7 +27,7 @@ class EPMTDBMigration(unittest.TestCase):
 
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         alembic_ini_path = os.path.join(BASE_DIR, '../../alembic.ini')
-        cfg = alembic_config.Config("alembic_ini_path")
+        cfg = alembic_config.Config(alembic_ini_path)
         cfg.set_main_option("script_location", "epmt_migrations")
 
         with capture() as (out,err):

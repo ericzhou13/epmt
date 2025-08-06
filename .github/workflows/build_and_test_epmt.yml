@@ -136,13 +136,12 @@ jobs:
         run: |
           PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -d $POSTGRES_DB -c '\l'
 
-      - name: Debug path
+      - name: Debug working directory and files
         run: |
           pwd
-          ls -R
-
-      - name: Find alembic.ini
-        run: find . -name alembic.ini
+          which epmt
+          python -c "import epmt; print(epmt.__file__)"
+          find /usr/lib/python3.9/site-packages/epmt -maxdepth 2 -type f
       
       - name: epmt check call 
         run: |

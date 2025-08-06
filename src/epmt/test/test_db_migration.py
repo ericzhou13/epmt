@@ -26,7 +26,7 @@ class EPMTDBMigration(unittest.TestCase):
         migration_file = 'migrations/versions/{}_add_active_column_to_users_table.py'.format(rev_id)
 
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        alembic_ini_path = os.path.join(BASE_DIR, '../../alembic.ini')
+        alembic_ini_path = os.path.join(BASE_DIR, '../alembic.ini')
         cfg = alembic_config.Config(alembic_ini_path)
         cfg.set_main_option("script_location", "epmt_migrations")
 
